@@ -1,38 +1,179 @@
-.App {
-  text-align: center;
+/* App.css */
+/* App.css */
+
+/* Set Roboto as the default font for the entire app */
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dropdown-label, .welcome-message, .message-item p {
+  font-family: 'Roboto', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app {
+  display: flex;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar {
+  width: 250px; 
+  padding: 20px;
+  background: #ffffff;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background: #F7F7F7;
+}
+
+.dropdown {
+  margin-bottom: 20px;
+}
+
+.dropdown label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.dropdown select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.dropdown-first {
+  margin-top: 60px; 
+}
+
+.dropdown-label {
+  font-size: 12px;
+  color: #757575;
+  font-weight: bold;
+}
+
+/* Messages styles */
+.message-item {
+  background: #fff; /* For visibility */
+  padding: 0px 8px; /* Reduced top and bottom padding, kept left and right */
+  margin-bottom: 8px; /* Space between messages */
+  max-width: 80%; /* Optional for message bubble max width */
+  word-break: break-word; /* Ensure text breaks to prevent overflow */
+}
+
+.messages-display {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  margin-top: 60px;
+  padding: 20px;
+  margin-bottom: 80px; /* Adjust this value so it doesn't overlap with the input field */
+  height: calc(100vh - 160px); /* This should be the height of the sidebar minus the chat input area */
+}
+.message-item:last-child {
+  margin-top: 10px; 
+}
+
+/* Ensure new message always visible */
+.messages-display:empty::after {
+  content: '';
+  height: 100%;
+}
+
+/* Chat styles */
+.chat-input-container {
+  position: fixed;
+  bottom: 0;
+  width: 900px;
+  background: #F7F7F7; 
+  padding: 20px;
+  display: flex; /* Align children in a row */
+  gap: 8px; /* Space between input and button */
+}
+
+.chat-input-container input {
+  flex-grow: 1; /* Input field takes up remaining space */
+  padding: 10px;
+}
+
+.chat-input-container button {
+  background: linear-gradient(#233DFF, #1A31B0); 
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.chat-input-container button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat-input-container button img {
+  width: 24px;
+  height: 24px; 
+  margin-inline: 8px;
+}
+
+.fixed-blurred-header {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 250px); /* Adjust the width to match the content area */
+  background: rgba(255, 255, 255, 0.8); /* White background with opacity */
+  backdrop-filter: blur(10px); /* Blur effect for content underneath */
+  z-index: 10; /* Ensure it's above other content */
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+
+.logo {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+}
+
+header .dropdown-menus {
+  margin-top: 0px;
+}
+
+.welcome-message {
+  font-size: 12px; 
+  color: #757575; 
+  margin: 140px 0 0px 0;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Header styles */
+.content {
+  flex: 1;
+  padding: 20px;
+  background: #F7F7F7;
+  position: relative; /* Needed for fixed header */
+}
+
+.content-header {
+  position: fixed;
+  top: 16px;
+  left: 290px; /* Adjust to match the sidebar width */
+  width: calc(100% - 250px); /* Adjust the width to match the content area */
+  background: rgba(247, 247, 247, 0.9); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Blur effect for content underneath */
+  z-index: 10; /* Ensure it's above other content */
+  padding: 10px 20px;
+  box-sizing: border-box; /* Ensure padding is included in width */
+  font-size: 18px;
+  font-weight: bold;
 }
